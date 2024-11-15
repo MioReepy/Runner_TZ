@@ -6,22 +6,22 @@ namespace EnviromentSpace
     public class FreezePlayer : MonoBehaviour
     {
         private PlayerMovement _currentPlayerMovement = null;
-        private bool PlayerMovementCashed = false;
+        private bool _playerMovementCashed = false;
         
         private void OnTriggerStay(Collider other)
         {
-            if (!other.gameObject.TryGetComponent(out PlayerMovement playerMovement) || PlayerMovementCashed) return;
+            if (!other.gameObject.TryGetComponent(out PlayerMovement playerMovement) || _playerMovementCashed) return;
             
-            PlayerMovementCashed = true;
+            _playerMovementCashed = true;
             _currentPlayerMovement = playerMovement;
             _currentPlayerMovement.enabled = false;
         }
         
         private void OnTriggerExit(Collider other)
         {
-            if (!PlayerMovementCashed) return;
+            if (!_playerMovementCashed) return;
             
-            PlayerMovementCashed = true;
+            _playerMovementCashed = false;
             _currentPlayerMovement.enabled = true;
             _currentPlayerMovement = null;
         }
