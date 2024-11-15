@@ -4,7 +4,7 @@ namespace PlayerSpace
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] [Range(0.01f, 10f)] private float _playerSpeed;
+        [SerializeField] [Range(2f, 15f)] private float _playerSpeed;
         private Vector3 _moveInput;
 
         public Vector2 MoveInput
