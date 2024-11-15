@@ -10,22 +10,20 @@ namespace EnviromentSpace
         
         private void OnTriggerStay(Collider other)
         {
-            if (other.gameObject.TryGetComponent(out PlayerMovement playerMovement) && !PlayerMovementCashed)
-            {
-                PlayerMovementCashed = true;
-                _currentPlayerMovement = playerMovement;
-                _currentPlayerMovement.enabled = false;
-            }
+            if (!other.gameObject.TryGetComponent(out PlayerMovement playerMovement) || PlayerMovementCashed) return;
+            
+            PlayerMovementCashed = true;
+            _currentPlayerMovement = playerMovement;
+            _currentPlayerMovement.enabled = false;
         }
         
         private void OnTriggerExit(Collider other)
         {
-            if (PlayerMovementCashed)
-            {
-                PlayerMovementCashed = true;
-                _currentPlayerMovement.enabled = true;
-                _currentPlayerMovement = null;
-            }
+            if (!PlayerMovementCashed) return;
+            
+            PlayerMovementCashed = true;
+            _currentPlayerMovement.enabled = true;
+            _currentPlayerMovement = null;
         }
     }
 }
