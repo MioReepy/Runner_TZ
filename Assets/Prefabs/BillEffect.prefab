@@ -29,7 +29,27 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4688743849784122110, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
+      propertyPath: simulationSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688743849784122110, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
       propertyPath: ShapeModule.type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688743849784122110, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
+      propertyPath: ShapeModule.arc.spread
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688743849784122110, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
+      propertyPath: SizeModule.separateAxes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688743849784122110, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688743849784122110, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
+      propertyPath: VelocityModule.x.minScalar
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4688743849784122110, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
@@ -47,6 +67,10 @@ PrefabInstance:
     - target: {fileID: 4688743849784122110, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879770153155002511, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6879770153155002511, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b

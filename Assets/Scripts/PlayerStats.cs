@@ -15,17 +15,18 @@ namespace PlayerSpace
     {
         public PlayerType playerType;
         public GameObject playerObject;
-        public int count;
+        public int minMoneyCount;
+        public int maxMoneyCount;
     }
 
     public class PlayerStats : MonoBehaviour
     {
-        [SerializeField] private int _maxMoney;
         [SerializeField] private int _commonMoney;
-        [SerializeField] private Player[] _player;
+
         public float CurrentMoney{get; private set;}
         
         public event Action<float> OnChangeMoney;
+        public event Action OnGameOver;
         
         public static PlayerStats Instance { get; private set; }
 
@@ -39,6 +40,12 @@ namespace PlayerSpace
         {
             CurrentMoney += money;
             OnChangeMoney?.Invoke(CurrentMoney);
+
+            if (CurrentMoney != 0) return;
+            
+            OnGameOver?.Invoke();
+            
+            Debug.Log($"Player {name}: Money changed to {money}");
         }
     }
 }

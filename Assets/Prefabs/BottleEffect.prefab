@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1899029653993162426}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0035363783, w: 0.9999938}
-  m_LocalPosition: {x: 0.956, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43,7 +43,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1899029653993162426}
   serializedVersion: 8
   lengthInSec: 2
-  simulationSpeed: 2
+  simulationSpeed: 3
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -612,7 +612,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -665,14 +665,14 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 2
+    type: 8
     angle: 45
     length: 0.5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: -90, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -871,7 +871,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 15
       minScalar: 50
       maxCurve:
         serializedVersion: 2
@@ -4893,8 +4893,8 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4814515474380136263}
   serializedVersion: 8
-  lengthInSec: 1.6
-  simulationSpeed: 1
+  lengthInSec: 1
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -4968,7 +4968,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.6
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5139,7 +5139,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 15
       minScalar: 1
       maxCurve:
         serializedVersion: 2

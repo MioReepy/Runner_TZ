@@ -23,5 +23,7 @@ namespace PlayerSpace
             
             transform.localPosition = Vector3.MoveTowards(transform.localPosition,movePosition, _playerSpeed * Time.fixedDeltaTime);
         }
+        
+        
     }
 }
