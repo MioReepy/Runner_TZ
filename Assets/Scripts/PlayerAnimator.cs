@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace PlayerSpace
@@ -6,7 +5,7 @@ namespace PlayerSpace
     public class PlayerAnimator : MonoBehaviour
     {
         private Animator _playerAnimator;
-        private static readonly int IsStart = Animator.StringToHash("IsStart");
+        private readonly int _isStart = Animator.StringToHash("IsStart");
 
         private void Awake()
         {
@@ -20,8 +19,7 @@ namespace PlayerSpace
 
         private void Instance_OnStart()
         {
-            _playerAnimator.SetBool(IsStart, true);
-
+            _playerAnimator.SetBool(_isStart, true);
         }
 
         private void OnDisable()

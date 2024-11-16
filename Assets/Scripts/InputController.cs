@@ -6,11 +6,12 @@ namespace PlayerSpace
 {
     public class InputController : MonoBehaviour
     {
-        public static InputController Instance;
         private PlayerMovement _playerMovement;
         private PlayerInput _playerInput;
         private InputAction _move;
         private bool _isStart;
+        
+        public static InputController Instance { get; private set; }
         
         public event Action OnStart;
 
