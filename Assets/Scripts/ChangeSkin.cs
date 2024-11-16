@@ -18,6 +18,8 @@ namespace PlayerSpace
                 
                 _currentIndexPlayer = skin;
             }
+            
+            PlayerStats.Instance.MaxMoney = _player[^1].maxMoneyCount;
         }
 
         private void Start()
@@ -27,21 +29,20 @@ namespace PlayerSpace
 
         void Instance_OnChangeMoney(float money)
         {
-            if (_player[_currentIndexPlayer].maxMoneyCount < money && _player.Length > _currentIndexPlayer - 1)
+            if (_player[_currentIndexPlayer].maxMoneyCount < money && _player.Length  - 1 > _currentIndexPlayer)
             {
                 _player[_currentIndexPlayer].playerObject.SetActive(false);
                 _currentIndexPlayer++;
                 _player[_currentIndexPlayer].playerObject.SetActive(true);
+                OnIsPoor?.Invoke(false);
             }
 
-            if (_player[_currentIndexPlayer].minMoneyCount > money && 0 < _currentIndexPlayer)
-            {
-                _player[_currentIndexPlayer].playerObject.SetActive(false);
-                _currentIndexPlayer--;
-                _player[_currentIndexPlayer].playerObject.SetActive(true);
-            }
+            if (!(_player[_currentIndexPlayer].minMoneyCount > money) || 0 >= _currentIndexPlayer) return;
             
-            OnIsPoor?.Invoke(_currentIndexPlayer != _player.Length - 1);
+            _player[_currentIndexPlayer].playerObject.SetActive(false);
+            _currentIndexPlayer--;
+            _player[_currentIndexPlayer].playerObject.SetActive(true);
+            OnIsPoor?.Invoke(true);
         }
 
         private void OnDisable()

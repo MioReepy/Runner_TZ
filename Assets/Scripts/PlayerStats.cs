@@ -22,8 +22,8 @@ namespace PlayerSpace
     public class PlayerStats : MonoBehaviour
     {
         [SerializeField] private int _commonMoney;
-
         public float CurrentMoney{get; private set;}
+        public float MaxMoney {get; set;}
         
         public event Action<float> OnChangeMoney;
         public event Action OnGameOver;
@@ -38,14 +38,13 @@ namespace PlayerSpace
 
         public void SetMoney(int money)
         {
+            if (CurrentMoney <= 1)
+            {
+                OnGameOver?.Invoke();
+            }
+            
             CurrentMoney += money;
             OnChangeMoney?.Invoke(CurrentMoney);
-
-            if (CurrentMoney != 0) return;
-            
-            OnGameOver?.Invoke();
-            
-            Debug.Log($"Player {name}: Money changed to {money}");
         }
     }
 }

@@ -45,12 +45,13 @@ namespace PlayerSpace
         private void Instance_OnWin()
         {
             _playerAnimator.SetBool(_isWin, true);
+            GetComponent<PlayerMovement>().enabled = false;
         }
 
         private void Instance_OnGameOver()
         {
             _playerAnimator.SetBool(_isFail, true);
-            Debug.Log("Game Over");
+            GetComponent<PlayerMovement>().enabled = false;
         }
 
         private void OnDisable()
