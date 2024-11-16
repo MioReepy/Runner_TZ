@@ -1,4 +1,5 @@
 using System;
+using EffectsSpace;
 using PlayerSpace;
 using UnityEngine;
 
@@ -24,6 +25,9 @@ namespace BonusSpace
         private void OnTriggerEnter(Collider other)
         {
             PlayerStats.Instance.CurrentMoney += _bonus.count;
+            GameObject effect = _bonus.bonusType == BonusType.Bill ? BillEffectPoolSize.Instance.GetPoolObject() : BottleEffectPoolSize.Instance.GetPoolObject();
+            effect.SetActive(true);
+            Destroy(gameObject);
         }
     }
 }

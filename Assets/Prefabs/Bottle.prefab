@@ -5271,6 +5271,10 @@ PrefabInstance:
       propertyPath: _bonus.BonusType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7600243361524833797, guid: 85166103f936d7c4ba03c1271707151c, type: 3}
+      propertyPath: _bonus.bonusType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7796569042563628125, guid: 85166103f936d7c4ba03c1271707151c, type: 3}
