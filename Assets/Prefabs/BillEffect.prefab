@@ -29,6 +29,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4688743849784122110, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
+      propertyPath: ShapeModule.type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688743849784122110, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688743849784122110, guid: 3c557399f2285354abd72c9fc0e110d4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}

@@ -23,7 +23,9 @@ namespace PlayerSpace
         [SerializeField] private int _maxMoney;
         [SerializeField] private int _commonMoney;
         [SerializeField] private Player[] _player;
-        public float CurrentMoney { get; set; }
+        public float CurrentMoney{get; private set;}
+        
+        public event Action<float> OnChangeMoney;
         
         public static PlayerStats Instance { get; private set; }
 
@@ -31,6 +33,12 @@ namespace PlayerSpace
         {
             Instance = this;
             CurrentMoney = _commonMoney;
+        }
+
+        public void SetMoney(int money)
+        {
+            CurrentMoney += money;
+            OnChangeMoney?.Invoke(CurrentMoney);
         }
     }
 }

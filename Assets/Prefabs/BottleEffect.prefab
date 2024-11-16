@@ -665,7 +665,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 6
+    type: 2
     angle: 45
     length: 0.5
     boxThickness: {x: 0, y: 0, z: 0}
