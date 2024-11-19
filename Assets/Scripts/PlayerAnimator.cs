@@ -1,4 +1,3 @@
-using GameControllerSpace;
 using UnityEngine;
 
 namespace PlayerSpace
@@ -23,8 +22,6 @@ namespace PlayerSpace
         {
             InputController.Instance.OnStart += Instance_OnStart;
             _skinPlayer.OnIsPoor += SkinPlayer_OnIsPoor;
-            Finish.Instance.OnWin += Instance_OnWin;
-            PlayerStats.Instance.OnGameOver += Instance_OnGameOver;
         }
 
         private void Instance_OnStart()
@@ -42,13 +39,13 @@ namespace PlayerSpace
             _playerAnimator.SetBool(_isPoor, value);
         }
 
-        private void Instance_OnWin()
+        public void PlayWin()
         {
             _playerAnimator.SetBool(_isWin, true);
             GetComponent<PlayerMovement>().enabled = false;
         }
 
-        private void Instance_OnGameOver()
+        public void PlayGameOver()
         {
             _playerAnimator.SetBool(_isFail, true);
             GetComponent<PlayerMovement>().enabled = false;
@@ -58,8 +55,6 @@ namespace PlayerSpace
         {
             InputController.Instance.OnStart -= Instance_OnStart;
             _skinPlayer.OnIsPoor -= SkinPlayer_OnIsPoor;
-            Finish.Instance.OnWin -= Instance_OnWin;
-            PlayerStats.Instance.OnGameOver -= Instance_OnGameOver;
         }
     }
 }

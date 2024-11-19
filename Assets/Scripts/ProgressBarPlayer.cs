@@ -6,24 +6,27 @@ namespace UISpace
 {
     public class ProgressBarPlayer : MonoBehaviour
     {
+        [SerializeField] private Player _player;
+        
         [SerializeField] private Image _timer;
         private float _maxMoney;
         
-        private void Start()
+        private void OnEnable()
         {
-            PlayerStats.Instance.OnChangeMoney += Instance_OnChangeMoney;
-            _maxMoney = PlayerStats.Instance.MaxMoney;
-            _timer.fillAmount = PlayerStats.Instance.CurrentMoney / _maxMoney;
+            _maxMoney = _player.PlayerStats.MaxMoney;
+            _timer.fillAmount = _player.PlayerStats.CurrentMoney / _maxMoney;
+
+            _player.PlayerStats.OnChangeMoney += OnChangeMoney;
         }
         
-        void Instance_OnChangeMoney(float money)
-        {
-            _timer.fillAmount = money / _maxMoney;
-        }
-
         private void OnDisable()
         {
-            PlayerStats.Instance.OnChangeMoney -= Instance_OnChangeMoney;
+            _player.PlayerStats.OnChangeMoney -= OnChangeMoney;
+        }
+
+        private void OnChangeMoney(float money)
+        {
+            _timer.fillAmount = money / _maxMoney;
         }
     }
 }

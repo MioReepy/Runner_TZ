@@ -1,4 +1,3 @@
-using GameControllerSpace;
 using PlayerSpace;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -7,34 +6,36 @@ namespace SplineNameSpace
 {
     public class SplineController : MonoBehaviour
     {
-        private void Start()
+        private SplineAnimate _splineAnimate;
+
+        private void Awake()
         {
-            InputController.Instance.OnStart += Instance_OnStart;
-            PlayerStats.Instance.OnGameOver += Instance_GameOver;
-            Finish.Instance.OnWin += Instance_OnWin;
+            _splineAnimate = GetComponent<SplineAnimate>();
         }
 
-        private void Instance_OnStart()
+        private void OnEnable()
         {
-            GetComponent<SplineAnimate>().Play();
-        }
-
-        private void Instance_GameOver()
-        {
-            GetComponent<SplineAnimate>().Pause();
+            InputController.Instance.OnStart += OnStartController;
         }
         
-        private void Instance_OnWin()
-        {
-            GetComponent<SplineAnimate>().Pause();
-        }
-
         private void OnDisable()
         {
-            InputController.Instance.OnStart -= Instance_OnStart;
-            PlayerStats.Instance.OnGameOver -= Instance_GameOver;
-            Finish.Instance.OnWin -= Instance_OnWin;
+            InputController.Instance.OnStart -= OnStartController;
+        }
 
+        private void OnStartController()
+        {
+            _splineAnimate.Play();
+        }
+
+        public void GameOver()
+        {
+            _splineAnimate.Pause();
+        }
+        
+        public void Win()
+        {
+            _splineAnimate.Pause();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace PlayerSpace
     }
     
     [Serializable]
-    public struct Player
+    public struct PlayerState
     {
         public PlayerType playerType;
         public GameObject playerObject;
@@ -27,12 +27,9 @@ namespace PlayerSpace
         
         public event Action<float> OnChangeMoney;
         public event Action OnGameOver;
-        
-        public static PlayerStats Instance { get; private set; }
 
         private void Awake()
         {
-            Instance = this;
             CurrentMoney = _commonMoney;
         }
 

@@ -24,7 +24,12 @@ namespace BonusSpace
 
         private void OnTriggerEnter(Collider other)
         {
-            PlayerStats.Instance.SetMoney(_bonus.count);
+            if (!other.TryGetComponent<Player>(out var player))
+            {
+                return;
+            }
+            
+            player.PlayerStats.SetMoney(_bonus.count);
             GameObject effect = _bonus.bonusType == BonusType.Bill ? BillEffectPoolSize.Instance.GetPoolObject() : BottleEffectPoolSize.Instance.GetPoolObject();
             effect.SetActive(true);
             Destroy(gameObject);

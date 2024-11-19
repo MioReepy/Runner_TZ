@@ -5,7 +5,8 @@ namespace PlayerSpace
 {
     public class ChangeSkin : MonoBehaviour
     {
-        [SerializeField] private Player[] _player;
+        [SerializeField] private PlayerStats _playerStats;
+        [SerializeField] private PlayerState[] _player;
         private int _currentIndexPlayer;
 
         public event Action<bool> OnIsPoor; 
@@ -19,15 +20,20 @@ namespace PlayerSpace
                 _currentIndexPlayer = skin;
             }
             
-            PlayerStats.Instance.MaxMoney = _player[^1].maxMoneyCount;
+            _playerStats.MaxMoney = _player[^1].maxMoneyCount;
         }
 
-        private void Start()
+        private void OnEnable()
         {
-            PlayerStats.Instance.OnChangeMoney += Instance_OnChangeMoney;
+            _playerStats.OnChangeMoney -= OnChangeMoney;
+        }
+        
+        private void OnDisable()
+        {
+            _playerStats.OnChangeMoney -= OnChangeMoney;
         }
 
-        void Instance_OnChangeMoney(float money)
+        void OnChangeMoney(float money)
         {
             if (_player[_currentIndexPlayer].maxMoneyCount < money && _player.Length  - 1 > _currentIndexPlayer)
             {
@@ -43,11 +49,6 @@ namespace PlayerSpace
             _currentIndexPlayer--;
             _player[_currentIndexPlayer].playerObject.SetActive(true);
             OnIsPoor?.Invoke(true);
-        }
-
-        private void OnDisable()
-        {
-            PlayerStats.Instance.OnChangeMoney -= Instance_OnChangeMoney;
         }
     }
 }
